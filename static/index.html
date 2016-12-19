@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <title>HSE-Marks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .fsize { width: 140px; }
+    </style>
+    <style type="text/css">
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            /* Margin bottom by footer height */
+            margin-bottom: 60px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            background-color: #f5f5f5;
+        }
+
+        .container .text-muted {
+            margin: 20px 0;
+        }
+
+        .footer > .container {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+    </style>
+    <link href="http://getbootstrap.com/examples/sticky-footer/sticky-footer1.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" ng-app="mapp">
+    <div class="page-header">
+     	<h2>Первый курс пройден, как насчет второго?</h2>
+    </div>
+    <ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#menu1">ТеорВер</a></li>
+    <li><a data-toggle="pill" href="#menu2">Алго</a></li>
+    <li><a data-toggle="pill" href="#menu3">Групп</a></li>
+    <li><a data-toggle="pill" href="#menu4">Англ</a></li>
+  </ul>
+    <br>
+    <div class="tab-content">
+    <div id="menu1" class="tab-pane fade in active" ng-controller="ctrl1">
+    <div class="panel panel-info">
+      <div class="panel-heading">Введите полученные оценки</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Семинары</label>
+              <input class="fsize" type="number" ng-model="p1">
+              <label>x{{k1}}</label>
+          </div>
+          <br/>
+        <div>
+     	      <label class="fsize">ИДЗ</label>
+              <input class="fsize" type="number" ng-model="p2">
+              <label>x{{k2}}</label>
+          </div>
+          <br/>
+        <div>
+     	      <label class="fsize">Контрольная</label>
+              <input class="fsize" type="number" ng-model="p3">
+              <label>x{{k3}}</label>
+          </div>
+          <br/>
+          <div>
+     	      <label class="fsize">Экзамен</label>
+              <input class="fsize" type="number" ng-model="p4">
+              <label>x{{k4}}</label>
+          </div>
+    </div>
+    </div>
+    <div class="panel" ng-class="{'panel-danger': pioI<4, 'panel-warning': 4<=pioI&&pioI<6, 'panel-success': pioI>=6}">
+      <div class="panel-heading">Результат</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Итоговая</label>
+              <label class="fsize">{{pioF}} ~ {{pioI}}</label>
+              <label ng-if="pioI>=4">Почти наверное у тебя зач ;)</label>
+              <label ng-if="pioI<4">Горе<del>инова</del></label>
+          </div>
+    </div>
+    </div>
+    </div>
+        
+    <div id="menu2" class="tab-pane fade" ng-controller="ctrl2">
+    <div class="panel panel-info">
+      <div class="panel-heading">Введите полученные оценки</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Семинары</label>
+              <input class="fsize" type="number" ng-model="p1">
+              <label>x{{k1}} x{{kn}}</label>
+          </div>
+          <br/>
+        <div>
+     	      <label class="fsize">Домашки</label>
+              <input class="fsize" type="number" ng-model="p2">
+              <label>x{{k2}} x{{kn}}</label>
+          </div>
+          <br/>
+          <div>
+     	      <label class="fsize">КДЗ</label>
+              <input class="fsize" type="number" ng-model="p3">
+              <label>x{{k3}} x{{kn}}</label>
+          </div>
+          <br/>
+        <div>
+     	      <label class="fsize">Экзамен</label>
+              <input class="fsize" type="number" ng-model="p4">
+              <label>x{{k4}}</label>
+          </div>
+    </div>
+    </div>
+    <div class="panel" ng-class="{'panel-danger': pioI<4, 'panel-warning': 4<=pioI&&pioI<6, 'panel-success': pioI>=6}">
+      <div class="panel-heading">Результат</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Итоговая</label>
+              <label class="fsize">{{pioF}} ~ {{pioI}}</label>
+              <label ng-if="pioI>=4">Аплодисменты в вашу корзинку ;)</label>
+              <label ng-if="pioI<4">Diesmal nicht</label>
+          </div>
+    </div>
+    </div>
+    </div>
+        
+    <div id="menu3" class="tab-pane fade" ng-controller="ctrl3">
+    <div class="panel panel-info">
+      <div class="panel-heading">Введите полученные оценки</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Опросы</label>
+              <input class="fsize" type="number" ng-model="p1">
+              <label>x{{k1}} x{{kn}}</label>
+          </div>
+          <br/>
+        <div>
+     	      <label class="fsize">Устав</label>
+              <input class="fsize" type="number" ng-model="p2">
+              <label>x{{k2}} x{{kn}}</label>
+          </div>
+          <br/>
+          <div>
+     	      <label class="fsize">Эссе</label>
+              <input class="fsize" type="number" ng-model="p3">
+              <label>x{{k3}} x{{kn}}</label>
+          </div>
+          <br/>
+          
+        <div>
+     	      <label class="fsize">Защита Макета</label>
+              <input class="fsize" type="number" ng-model="p4">
+              <label>x{{k4}} x{{kn}}</label>
+          </div>
+          <br/>
+          
+        <div>
+     	      <label class="fsize">Защита проекта</label>
+              <input class="fsize" type="number" ng-model="p5">
+              <label>x{{k5}}</label>
+          </div>
+    </div>
+    </div>
+    <div class="panel" ng-class="{'panel-danger': pioI<4, 'panel-warning': 4<=pioI&&pioI<6, 'panel-success': pioI>=6}">
+      <div class="panel-heading">Результат</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Итоговая</label>
+              <label class="fsize">{{pioF}} ~ {{pioI}}</label>
+              <label ng-if="pioI>=4">Затащил/Защитил ;)</label>
+              <label ng-if="pioI<4">Пересчитай</label>
+          </div>
+    </div>
+    </div>
+    </div>
+        
+    <div id="menu4" class="tab-pane fade" ng-controller="ctrl4">
+    <div class="panel panel-info">
+      <div class="panel-heading">Введите полученные оценки</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Накоп</label>
+              <input class="fsize" type="number" ng-model="p1">
+              <label>x{{k1}}</label>
+          </div>
+          <br/>
+        <div>
+     	      <label class="fsize">Экзамен</label>
+              <input class="fsize" type="number" ng-model="p2">
+              <label>x{{k2}}</label>
+          </div>
+    </div>
+    </div>
+    <div class="panel" ng-class="{'panel-danger': pioI<4, 'panel-warning': 4<=pioI&&pioI<6, 'panel-success': pioI>=6}">
+      <div class="panel-heading">Результат</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Итоговая</label>
+              <label class="fsize">{{pioF}} ~ {{pioI}}</label>
+              <label ng-if="pioI>=4">Yay! Nice guy ;)</label>
+              <label ng-if="pioI<4">Видимо, у тебя Архипов =(</label>
+          </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+</div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Все персонажи и коэффициенты вымышлены. Любые совпадения случайны. Автор не несёт ответстренности за кривые руки.</p>
+      </div>
+    </footer>
+    
+<script>
+    var app = angular.module('mapp', []);
+    app.controller('ctrl1', function($scope, $http, $timeout, $interval) {
+        $scope.p1=4;    
+        $scope.p2=4;
+        $scope.p3=4;
+        $scope.p4=4;
+
+        $scope.doit = function(){
+            $scope.p1=clamp($scope.p1,0,10);
+            $scope.p2=clamp($scope.p2,0,10);
+            $scope.p3=clamp($scope.p3,0,10);
+            $scope.p4=clamp($scope.p4,0,10);
+            
+            $scope.k1=0.1;
+            $scope.k2=0.1; 
+            $scope.k3=0.3;
+            $scope.k4=0.5;
+            $scope.pio=$scope.p1*$scope.k1+$scope.p2*$scope.k2+$scope.p3*$scope.k3+$scope.p4*$scope.k4;
+            
+            $scope.pioF=$scope.pio.toFixed(2);
+            $scope.pioI=$scope.pio.toFixed(0);
+            
+        };
+        $scope.doit();
+        $scope.$watch('p1', function(){ $scope.doit(); });        
+        $scope.$watch('p2', function(){ $scope.doit(); });
+        $scope.$watch('p3', function(){ $scope.doit(); });
+        $scope.$watch('p4', function(){ $scope.doit(); });
+
+            
+    
+});
+    
+    app.controller('ctrl2', function($scope, $http, $timeout, $interval) {
+        $scope.p1=4;    
+        $scope.p2=4;
+        $scope.p3=4;        
+        $scope.p4=4;
+
+
+        $scope.doit = function(){
+            $scope.p1=clamp($scope.p1,0,10);
+            $scope.p2=clamp($scope.p2,0,10);
+            $scope.p3=clamp($scope.p3,0,10);      
+            $scope.p4=clamp($scope.p4,0,10);
+            
+            $scope.k1=0.2;
+            $scope.k2=0.3; 
+            $scope.k3=0.5;
+            $scope.k4=0.5;
+            $scope.kn=0.5;
+            
+            $scope.pio=($scope.kn)*($scope.k1*$scope.p1+$scope.k2*$scope.p2+$scope.k3*$scope.p3)+$scope.k4*$scope.p4;
+            
+            $scope.pioF=$scope.pio.toFixed(2);
+            $scope.pioI=$scope.pio.toFixed(0);
+            
+        };
+        $scope.doit();
+        $scope.$watch('p1', function(){ $scope.doit(); });        
+        $scope.$watch('p2', function(){ $scope.doit(); });
+        $scope.$watch('p3', function(){ $scope.doit(); });
+        $scope.$watch('p4', function(){ $scope.doit(); });
+
+            
+    
+});
+    
+    app.controller('ctrl3', function($scope, $http, $timeout, $interval) {
+        $scope.p1=4;    
+        $scope.p2=4;
+        $scope.p3=4;        
+        $scope.p4=4;
+        $scope.p5=4;
+
+
+        $scope.doit = function(){
+            $scope.p1=clamp($scope.p1,0,10);
+            $scope.p2=clamp($scope.p2,0,10);
+            $scope.p3=clamp($scope.p3,0,10);  
+            $scope.p4=clamp($scope.p4,0,10);      
+            $scope.p5=clamp($scope.p5,0,10);
+            
+            $scope.k1=0.3;
+            $scope.k2=0.2; 
+            $scope.k3=0.2;
+            $scope.k4=0.3;
+            $scope.k5=0.5;
+            $scope.kn=0.5;
+            
+            $scope.pio=($scope.kn)*($scope.k1*$scope.p1+$scope.k2*$scope.p2+$scope.k3*$scope.p3+$scope.k4*$scope.p4)+$scope.k5*$scope.p5;
+
+            
+            $scope.pioF=$scope.pio.toFixed(2);
+            $scope.pioI=$scope.pio.toFixed(0);
+            
+        };
+        $scope.doit();
+        $scope.$watch('p1', function(){ $scope.doit(); });        
+        $scope.$watch('p2', function(){ $scope.doit(); });
+        $scope.$watch('p3', function(){ $scope.doit(); });  
+        $scope.$watch('p4', function(){ $scope.doit(); });
+        $scope.$watch('p5', function(){ $scope.doit(); });
+
+            
+    
+});
+    
+    app.controller('ctrl4', function($scope, $http, $timeout, $interval) {
+        $scope.p1=4;    
+        $scope.p2=4;
+
+
+        $scope.doit = function(){
+            $scope.p1=clamp($scope.p1,0,10);
+            $scope.p2=clamp($scope.p2,0,10);   
+            
+            $scope.k1=0.6;
+            $scope.k2=0.4;
+            
+            $scope.pio=$scope.k1*$scope.p1+$scope.k2*$scope.p2;
+            
+            $scope.pioF=$scope.pio.toFixed(2);
+            $scope.pioI=$scope.pio.toFixed(0);
+            
+        };
+        $scope.doit();
+        $scope.$watch('p1', function(){ $scope.doit(); });        
+        $scope.$watch('p2', function(){ $scope.doit(); });
+
+            
+    
+});
+    
+    function toint(n)
+    {
+        return Number(n.toFixed(0));
+    }
+    
+    function clamp(n,min,max)
+    {
+        if(n<min) return min;
+        if(n>max) return max;
+        return n;
+    }
+</script>
+
+</body>
+</html>
