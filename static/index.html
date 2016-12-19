@@ -4,12 +4,17 @@
     <title>HSE-Marks</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?136"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <style type="text/css">
         .fsize { width: 140px; }
+        
+        .pull-right {
+            float: right !important;
+        }
     </style>
     <style type="text/css">
         html {
@@ -42,10 +47,27 @@
     <link href="//getbootstrap.com/examples/sticky-footer/sticky-footer1.css" rel="stylesheet">
 </head>
 <body>
-
+<script type="text/javascript">
+  VK.init({apiId: 5784214, onlyWidgets: true});
+</script>
+    
 <div class="container" ng-app="mapp">
     <div class="page-header">
-     	<h2>Первый курс пройден, как насчет второго?</h2>
+        <table>
+            <tr>
+                <td>
+                    <h2>Первый курс пройден, как насчет второго?</h2>
+                </td>
+                <td>
+                    <div style="text-align:right"><div id="vk_like"></div></div>
+                </td>
+            </tr>
+        </table>
+     	<!--<label><h2>Первый курс пройден, как насчет второго?</h2></label>
+        <label class="pull-right"><div id="vk_like"></div></label>-->
+        <script type="text/javascript">
+         VK.Widgets.Like('vk_like');
+        </script>
     </div>
     <ul class="nav nav-pills">
     <li class="active"><a data-toggle="pill" href="#menu1">ТеорВер</a></li>
