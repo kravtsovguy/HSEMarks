@@ -63,8 +63,6 @@
                 </td>
             </tr>
         </table>
-     	<!--<label><h2>Первый курс пройден, как насчет второго?</h2></label>
-        <label class="pull-right"><div id="vk_like"></div></label>-->
         <script type="text/javascript">
          VK.Widgets.Like("vk_like", {type: "mini"});
         </script>
@@ -74,6 +72,7 @@
     <li><a data-toggle="pill" href="#menu2">Алго</a></li>
     <li><a data-toggle="pill" href="#menu3">Групп</a></li>
     <li><a data-toggle="pill" href="#menu4">Англ</a></li>
+    <li><a data-toggle="pill" href="#menu5">Java</a></li>
   </ul>
     <br>
     <div class="tab-content">
@@ -112,8 +111,8 @@
           <div>
      	      <label class="fsize">Итоговая</label>
               <label class="fsize">{{pioF}} ~ {{pioI}}</label>
-              <label ng-if="pioI>=4">Почти наверное у тебя зач ;)</label>
-              <label ng-if="pioI<4">Горе<del>инова</del></label>
+              <label ng-if="pioI>=4">Почти наверное у тебя зач =)</label>
+              <label ng-if="pioI<4">Горе</label>
           </div>
     </div>
     </div>
@@ -154,7 +153,7 @@
           <div>
      	      <label class="fsize">Итоговая</label>
               <label class="fsize">{{pioF}} ~ {{pioI}}</label>
-              <label ng-if="pioI>=4">Аплодисменты в вашу корзинку ;)</label>
+              <label ng-if="pioI>=4">Аплодисменты в вашу корзинку =)</label>
               <label ng-if="pioI<4">Diesmal nicht</label>
           </div>
     </div>
@@ -204,7 +203,7 @@
           <div>
      	      <label class="fsize">Итоговая</label>
               <label class="fsize">{{pioF}} ~ {{pioI}}</label>
-              <label ng-if="pioI>=4">Затащил/Защитил ;)</label>
+              <label ng-if="pioI>=4">Затащил/Защитил =)</label>
               <label ng-if="pioI<4">Пересчитай</label>
           </div>
     </div>
@@ -234,8 +233,50 @@
           <div>
      	      <label class="fsize">Итоговая</label>
               <label class="fsize">{{pioF}} ~ {{pioI}}</label>
-              <label ng-if="pioI>=4">Yay! Nice guy ;)</label>
+              <label ng-if="pioI>=4">Айм Глэд ю лайкед ит! Тейк кэа! =)</label>
               <label ng-if="pioI<4">Видимо, у тебя Архипов =(</label>
+          </div>
+    </div>
+    </div>
+    </div>
+        
+    <div id="menu5" class="tab-pane fade" ng-controller="ctrl5">
+    <div class="panel panel-info">
+      <div class="panel-heading">Введите полученные оценки</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">ДЗ 1</label>
+              <input class="fsize" type="number" ng-model="p1">
+              <label>x{{k1}}</label>
+          </div>
+          <br/>
+        <div>
+     	      <label class="fsize">Тест 1</label>
+              <input class="fsize" type="number" ng-model="p2">
+              <label>x{{k2}}</label>
+          </div>
+        <br/>
+        <div>
+     	      <label class="fsize">ДЗ 2</label>
+              <input class="fsize" type="number" ng-model="p3">
+              <label>x{{k3}}</label>
+          </div>
+        <br/>
+        <div>
+     	      <label class="fsize">Тест 2</label>
+              <input class="fsize" type="number" ng-model="p4">
+              <label>x{{k4}}</label>
+          </div>
+    </div>
+    </div>
+    <div class="panel" ng-class="{'panel-danger': pioI<4, 'panel-warning': 4<=pioI&&pioI<6, 'panel-success': pioI>=6}">
+      <div class="panel-heading">Результат</div>
+      <div class="panel-body">
+          <div>
+     	      <label class="fsize">Итоговая</label>
+              <label class="fsize">{{pioF}} ~ {{pioI}}</label>
+              <label ng-if="pioI>=4">Держи конфетку =)</label>
+              <label ng-if="pioI<4">Círculo verde</label>
           </div>
     </div>
     </div>
@@ -384,6 +425,45 @@
 
             
     
+});
+
+    app.controller('ctrl5', function($scope, $http, $timeout, $interval) {
+        $scope.p1=4;    
+        $scope.p2=4;        
+        $scope.p3=4;
+        $scope.p4=4;
+
+        $scope.doit = function(){
+            $scope.p1=clamp($scope.p1,0,10);
+            $scope.p2=clamp($scope.p2,0,10);
+            $scope.p3=clamp($scope.p3,0,10);   
+            $scope.p4=clamp($scope.p4,0,10);   
+  
+            
+            $scope.k1=0.25;
+            $scope.k2=0.75;          
+            $scope.k3=0.25;
+            $scope.k4=0.75;
+            $scope.k5=0.4;
+            $scope.k6=0.6;
+            
+            $scope.m1 = toint($scope.k1*$scope.p1+$scope.k2*$scope.p2); 
+            $scope.m2 = toint($scope.k3*$scope.p3+$scope.k4*$scope.p4);
+
+            
+            $scope.pio=$scope.k5*$scope.m1+$scope.k6*$scope.m2;
+            
+            $scope.pioF=$scope.pio.toFixed(2);
+            $scope.pioI=$scope.pio.toFixed(0);
+            
+        };
+        $scope.doit();
+        $scope.$watch('p1', function(){ $scope.doit(); });        
+        $scope.$watch('p2', function(){ $scope.doit(); });        
+        $scope.$watch('p3', function(){ $scope.doit(); });
+        $scope.$watch('p4', function(){ $scope.doit(); });
+
+
 });
     
     function toint(n)
