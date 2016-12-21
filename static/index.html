@@ -247,25 +247,25 @@
           <div>
      	      <label class="fsize">ДЗ 1</label>
               <input class="fsize" type="number" ng-model="p1">
-              <label>x{{k1}}</label>
+              <label>x{{k1}} x{{k5}}</label>
           </div>
           <br/>
         <div>
      	      <label class="fsize">Тест 1</label>
               <input class="fsize" type="number" ng-model="p2">
-              <label>x{{k2}}</label>
+              <label>x{{k2}} x{{k5}}</label>
           </div>
         <br/>
         <div>
      	      <label class="fsize">ДЗ 2</label>
               <input class="fsize" type="number" ng-model="p3">
-              <label>x{{k3}}</label>
+              <label>x{{k3}} x{{k6}}</label>
           </div>
         <br/>
         <div>
      	      <label class="fsize">Тест 2</label>
               <input class="fsize" type="number" ng-model="p4">
-              <label>x{{k4}}</label>
+              <label>x{{k4}} x{{k6}}</label>
           </div>
     </div>
     </div>
@@ -312,8 +312,14 @@
             $scope.k4=0.5;
             $scope.pio=$scope.p1*$scope.k1+$scope.p2*$scope.k2+$scope.p3*$scope.k3+$scope.p4*$scope.k4;
             
+            
+            
             $scope.pioF=$scope.pio.toFixed(2);
-            $scope.pioI=$scope.pio.toFixed(0);
+            if ($scope.pio < 4){
+                $scope.pioI=Math.floor($scope.pio);
+            }else{
+                $scope.pioI=$scope.pio.toFixed(0);
+            }
             
         };
         $scope.doit();
