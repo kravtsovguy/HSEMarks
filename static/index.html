@@ -110,6 +110,11 @@
               <input class="fsize" type="number" ng-model="p5">
               <label>x{{k5}}</label>
           </div>
+          <hr>
+          <div>
+            <label class="fsize">Дополнительно</label>
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/12dSyYWYqk9OqlOF5TUZ1RO6_Zw5_gfOEMxm0fggNfmY/edit#gid=0">накоп</a>
+          </div>
     </div>
     </div>
     <div class="panel" ng-class="{'panel-danger': pioI<4, 'panel-warning': 4<=pioI&&pioI<6, 'panel-success': pioI>=6}">
@@ -145,6 +150,11 @@
      	      <label class="fsize">Экзамен</label>
               <input class="fsize" type="number" ng-model="p3">
               <label>x{{k3}}</label>
+          </div>
+          <hr>
+          <div>
+            <label class="fsize">Дополнительно</label>
+            <a target="_blank" href="https://drive.google.com/file/d/0BzSg2V-5eLm8Z0xPWFBVXzJSMmc/view">накоп</a>
           </div>
     </div>
     </div>
@@ -218,6 +228,15 @@
               <input class="fsize" type="number" ng-model="p3">
               <label>x{{k3}}</label>
           </div>
+          <hr>
+          <div>
+            <label class="fsize">Дополнительно</label>
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1KWpJMH_7I-EPQ_8fvb0w-0LDcFn1LvdweY1fO9haM_U/edit#gid=0">домашки 153</a>
+            <label>, </label>
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1Ae4dxkUaLK33EA2NbAn_I5y6dHiSQwO4m1pRBiW_gYc/edit#gid=0">домашки 154</a>
+            <label> и </label>
+            <a target="_blank" href="https://drive.google.com/open?id=0B91x_nAaFQ-YTFZ6NzJlUUtQM2s">контрольная</a>
+          </div>
     </div>
     </div>
     <div class="panel" ng-class="{'panel-danger': pioI<4, 'panel-warning': 4<=pioI&&pioI<6, 'panel-success': pioI>=6}">
@@ -283,6 +302,13 @@
      	      <label class="fsize">Экзамен</label>
               <input class="fsize" type="number" ng-model="p8">
               <label>x{{k8}}</label>
+          </div>
+          <hr>
+          <div>
+            <label class="fsize">Дополнительно</label>
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1HAm8mlAIB6gMskNZudunbqUIjitvgLmLRpALMdiK5OY/edit#gid=1347556945">накоп 151</a>
+            <label> и </label>
+            <a target="_blank" href="https://drive.google.com/open?id=0BzSg2V-5eLm8bnZiN2ExMHZ2eHM">накоп 152,153,154</a>
           </div>
     </div>
     </div>
@@ -485,11 +511,19 @@
             $scope.kn = 0.5;
             
             $scope.m1 = $scope.k1*$scope.p1 + $scope.k2*$scope.p2;
+            $scope.m1 = Math.round($scope.m1);
+
             $scope.m2 = $scope.k3*$scope.p3 + $scope.k4*$scope.p4;
+            $scope.m2 = Math.round($scope.m2);
+
             $scope.m3 = $scope.k5*$scope.p5 + $scope.k6*$scope.p6;
+            $scope.m3 = Math.round($scope.m3);
+
             $scope.m4 = $scope.k7*$scope.p7;
+            $scope.m4 = Math.round($scope.m4);
 
             $scope.no = $scope.km * ($scope.m1 + $scope.m2 + $scope.m3 + $scope.m4);
+            $scope.no = Math.round($scope.no);
 
             $scope.pio = $scope.kn*$scope.no + $scope.k8*$scope.p8;
             
